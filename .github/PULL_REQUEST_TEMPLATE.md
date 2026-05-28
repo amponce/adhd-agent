@@ -1,4 +1,4 @@
-<!-- Use the skill on yourself. The PR you're opening is a LOCKED task. -->
+<!-- Use the skill on yourself: this PR is the task. -->
 
 ## Done =
 

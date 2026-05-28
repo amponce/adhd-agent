@@ -14,7 +14,7 @@ labels: [adhd-drift-log]
 
 ## Raised during
 
-<!-- The locked task that was active when this got captured.
+<!-- The task that was active when this got captured.
      Example: "Adding the Skip Break button to pomodoro-timer." -->
 
 ## Why this is worth tracking (vs leaving logged)
