@@ -17,11 +17,20 @@ AI-assisted coding fails two ways:
 
 ```
 SCOUT  →  exploration allowed, no edits, ~15 min time-box
-LOCKED →  one task, one deliverable sentence, drift goes to parking lot
+LOCKED →  one task, one deliverable sentence, no surprises
 DONE   →  merged PR (or named-branch commit landing somewhere stable)
 ```
 
 The agent says them out loud. You say them out loud. When either side drifts, the other names it.
+
+## The reviewer test (this is the whole game)
+
+While LOCKED, every mid-task observation gets one question: **would a reviewer of this PR be surprised by this change?**
+
+- **No** — just do it. Typo, missing import, one-line obvious adjacent fix. Bundle it. Mention under "Also fixed:" in the PR body so it's visible, not buried.
+- **Yes** — drift log it. New feature, unrelated refactor, scope creep. Goes to `docs/ADHD-DRIFT-LOG.md` (default) or a GitHub issue labeled `adhd-drift-log` (promotion).
+
+No bureaucracy for good engineering. No silent scope creep.
 
 ### What that looks like
 
@@ -32,17 +41,17 @@ You:    fix the empty-email crash in src/auth/login.ts
 Agent:  Locked. Done = src/auth/login.ts rejects empty strings under test.
 
 [mid-task]
-Agent:  This file has a typo on line 78 and the helper module
-        is undocumented. Address either?
-You:    no, just the bug
-Agent:  Parked both → docs/ADHD-PARKING-LOT.md. Back to validation.
+Agent:  Fixed a typo on line 78 along the way (one-line, related).
+        The helper module is undocumented — bigger lift, that one's
+        a drift-log unless you want it bundled?
+You:    just the bug
+Agent:  Logged: docs/ADHD-DRIFT-LOG.md. Back to validation.
 
 [later]
 You:    PR's merged
-Agent:  Done. Parking lot has 2 items from this session:
-        - typo on line 78
+Agent:  Done. Drift log has 1 item from this session:
         - undocumented helper module
-        Which becomes the next lock?
+        Want that as the next lock?
 ```
 
 Six lines and you understand the whole protocol.
@@ -99,7 +108,7 @@ If you find a shape other people would benefit from, PR back.
 
 ## Why it works (when it works)
 
-It doesn't enforce anything. It can't — it's a markdown file the model reads. What it does is give *both sides* of the conversation the same words. Once `LOCKED` and `parking lot` and `Done = …` are in your shared vocabulary, drift becomes nameable. And once it's nameable, it stops being silent.
+It doesn't enforce anything. It can't — it's a markdown file the model reads. What it does is give *both sides* of the conversation the same words. Once `LOCKED` and `drift log` and `Done = …` are in your shared vocabulary, drift becomes nameable. And once it's nameable, it stops being silent.
 
 ## License
 

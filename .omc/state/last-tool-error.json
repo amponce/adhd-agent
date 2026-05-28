@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd ~/Developer/adhd-agent && git mv .github/ISSUE_TEMPLATE/parking-lot-promotion.md .github/ISSUE_TEMPLATE/drift-log-promotion.md && ls .github/ISSUE_TEMPLATE/\",\"description\":\"Rename issue...",
+  "error": "Exit code 128\nfatal: not under version control, source=.github/ISSUE_TEMPLATE/parking-lot-promotion.md, destination=.github/ISSUE_TEMPLATE/drift-log-promotion.md",
+  "timestamp": "2026-05-28T21:37:00.274Z",
+  "retry_count": 1
+}
